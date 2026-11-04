@@ -78,3 +78,121 @@ print(f"Revenue: {revenue:,.2f}")
 print(f"Margin: {margin*100:.2f}%")
 print(f"Revenue rounded: {round(revenue,-3)/1000:,.0f}K")
 
+# ==================================================
+# PART 2: CONDITIONS — BUSINESS RULES
+# ==================================================
+
+#9.Customer tier
+spend = 62000
+#spend = 5000 tested
+#100000, 49999.99, 20000 and 5000
+if spend >= 100000:
+    tier = 'Platinum'
+elif spend >= 50000:
+    tier = 'Gold'
+elif spend >= 20000:
+    tier = 'Silver'
+elif spend < 20000:
+    tier = 'Bronze'
+else:
+    print("Invalid tier")
+print(f"Spend: {spend} ({tier})")
+
+#10.Discount slab
+purchase = 5400
+#purchase = 10000  tested
+#999.99, 1000, 4999.99 and 10000
+
+if purchase < 1000:
+    discount = 0
+elif purchase >= 1000 and purchase < 5000:
+    discount = 5
+elif purchase >= 5000 and purchase < 10000:
+    discount = 10
+elif purchase >= 10000:
+    discount = 15
+else:
+    print("Invalid input")
+
+final_amount = purchase - (purchase*discount/100)
+print(f"Discount: {discount}% Final Amount: {final_amount:.2f}")
+
+#11.RAG status 
+achievement = 92.4
+#achievement = 89.99  tested
+#100, 90 and 89.99
+if achievement >= 100:
+    RAG = 'Green'
+elif achievement >= 90:
+    RAG = 'Amber'
+elif achievement < 90:
+    RAG = 'Red'
+else:
+    print("Invalid input")
+print(f"Achievement: {achievement} ({RAG})")
+
+#12.Tax slab calculation
+income = 750000
+#income = 1000000 tested
+#250000, 600000 and 1000000
+if income <= 300000:
+    tax_amount = 0
+elif income > 300000 and income <= 600000:
+    tax_amount = (income - 300000) * 5 / 100
+elif income > 600000:
+    tax_amount = (300000 * 5 / 100) + ((income - 600000) * 10 / 100)
+else:
+    print("Invalid input")
+
+print(f"Tax amount: {tax_amount:.2f}")
+
+#13.Order validation
+quantity = 15
+#0,-2,5  test quantities
+#quantity = 5
+stock = 10
+payment = "Paid"
+#payment = "Not Paid"  #test case
+if quantity <= 0:
+    print("Reject: invalid quantity")
+elif quantity > stock:
+    print("Reject: insufficient stock")
+elif payment != 'Paid':
+    print("Reject: payment failed")
+else:
+    print("Accept")
+
+#14.Loan eligibility
+age = 62  
+#age = 50  test case
+monthly_income = 40000
+credit_score = 680  
+#credit_score = 800  test case
+if age >= 18 and age <= 60 and monthly_income >= 25000 and credit_score >= 700:
+    print("Eligible")
+else:
+    if age < 18 or age > 60:
+        print("Age is not between 18 and 60 years")
+    if monthly_income < 25000:
+        print("Monthly income is not atleat 25000")
+    if credit_score < 700:
+        print("Credit score is not atleast 700")
+
+
+#15.Fiscal quarter
+month = 5
+#month = 12  test case
+#1, 3, 4 and 12
+if month >= 4 and month <= 6:
+    calendar = 'Q2'
+    Fiscal = 'Q1'
+elif month > 6 and month <= 9:
+    calendar = 'Q3'
+    Fiscal = 'Q2'
+elif month > 9 and month <= 12:
+    calendar = 'Q4'
+    Fiscal = 'Q3'
+elif month >= 1 and month < 4:
+    calendar = 'Q1'
+    Fiscal = 'Q4'
+print(f"Calendar {calendar}, Fiscal {Fiscal}")
